@@ -1,7 +1,7 @@
 #include<string>
 #include<iostream>
 using namespace std;
-
+//1.
 class Employee
 {
 protected:
@@ -39,4 +39,16 @@ public:
 		return sal;
 	}
 };
+
+//2.
+
+class SalaryEmployee : public Employee //derived class SalarayEmployee
+{
+public:
+	void setSalary(float salary)//mutator
+	{
+		sal = salary;
+	}
+
+};//end of derived class
 
