@@ -42,7 +42,7 @@ public:
 
 //2.
 
-class SalaryEmployee : public Employee //derived class SalarayEmployee
+class SalaryEmployee : public Employee //derived class SalaryEmployee
 {
 public:
 	void setSalary(float salary)//mutator
@@ -51,4 +51,26 @@ public:
 	}
 
 };//end of derived class
+
+//3.
+
+class HourlyEmployee : public Employee//derived class HourlyEmployee
+{
+private:
+	float hourlyrate;
+	int hours;
+public:
+	void setHoursWorked(int hWorked) //giving hours variable a value
+	{
+		hours = hWorked;
+	}
+	void setHourlyRate(float hRate) //giving hourlyrate variable a value
+	{
+		hourlyrate = hRate;
+	}
+	void setSalary() //calculating salary to be paid out
+	{
+		sal = hourlyrate*hours;
+	}
+};
 
