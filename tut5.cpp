@@ -40,7 +40,7 @@ public:
 	}
 };
 
-//2.
+//2.a
 
 class SalaryEmployee : public Employee //derived class SalaryEmployee
 {
@@ -52,7 +52,7 @@ public:
 
 };//end of derived class
 
-//3.
+//2.b
 
 class HourlyEmployee : public Employee//derived class HourlyEmployee
 {
@@ -73,4 +73,30 @@ public:
 		sal = hourlyrate*hours;
 	}
 };
+//2.c
 
+class CommissionEmployee : public Employee //derived class CommissionEmployee
+{
+private:
+	float baseSalary;
+	float rate;
+	float revenue;
+	
+public:
+	void setBaseSalary(float b) //setting a value to  baseSalaray
+	{
+		baseSalary = b;
+	}
+	void setRate(float r)//setting a value to  rate
+	{
+		rate = r;
+	}
+	void setRevenue(float rev)//setting a value to revenue
+	{
+		revenue = rev;
+	}
+	void setSalary() //calculating commission
+	{
+		sal = (baseSalary)+(rate*revenue);
+	}
+};
