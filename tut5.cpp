@@ -1,17 +1,16 @@
 #include<string>
 #include<iostream>
 using namespace std;
+
 //1.
 class Employee
 {
 protected:
-	string name; //Employee name
+	string employeeName; //Employee name
 	int staffNum; //Emplyee staff number
 	float sal; //Amount paid at end of month
 public:
 	static int numberOfEmployees;
-	virtual string name();
-	virtual unsigned int staffNumber(); 
 	Employee() //default constructor
 	{}
 	~Employee() //defualt destructor
@@ -19,17 +18,17 @@ public:
 
 	void setEmployee(string n, unsigned int s) //mutator
 	{
-		name = n;
+		employeeName = n;
 		staffNum = s;
-		//numberOfEmployees++;
+		Employee::numberOfEmployees++;
 	}
 
-	string name() //accessor
+	virtual string getEmployeeName() //accessor
 	{
-		return name;
+		return employeeName;
 	}
 
-	unsigned int staffNumber()//accessor
+	virtual unsigned int staffNumber()//accessor
 	{
 		return staffNum;
 	}
@@ -39,7 +38,7 @@ public:
 		return sal;
 	}
 };
-
+int Employee::numberOfEmployees = 0;
 //2.a
 
 class SalaryEmployee : public Employee //derived class SalaryEmployee
@@ -100,3 +99,37 @@ public:
 		sal = (baseSalary)+(rate*revenue);
 	}
 };
+
+int main() //test class
+{
+	SalaryEmployee S1; //Object for SalaryEmployee class
+	HourlyEmployee H1;//Object for HourlyEmployee class
+	CommissionEmployee C1;//Object for CommissionEmployee class
+
+	Employee *pSalEmp = &S1;//pointer to object S1
+	Employee *pHouEmp = &H1;//pointer to object H1
+	Employee *pComEmp = &C1;//pointer to object C1
+	Employee x;
+
+	pSalEmp->setEmployee("Kahil", 123);
+	pHouEmp->setEmployee("Kimaan", 456);
+	pComEmp->setEmployee("Kashvir", 789);
+
+	S1.setSalary(1500);
+
+	H1.setHourlyRate(5);
+	H1.setHoursWorked(20);
+	H1.setSalary();
+
+	C1.setBaseSalary(100.20);
+	C1.setRate(2/3);
+	C1.setRevenue(1234);
+	C1.setSalary();
+
+	cout << S1.salary() << " " << S1.getEmployeeName() << " " << S1.staffNumber() << endl;//output employee details
+	cout << H1.salary() << " " << H1.getEmployeeName() << " " << H1.staffNumber() << endl;//output employee details
+	cout << C1.salary() << " " << C1.getEmployeeName() << " " << C1.staffNumber() << endl;//output employee details
+    cout << "Number of employees: "<<Employee::numberOfEmployees << endl;
+
+	return 1;
+}
